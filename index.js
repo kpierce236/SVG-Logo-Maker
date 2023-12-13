@@ -1,4 +1,4 @@
-const inquirer = require('inquirer');
+import inquirer from 'inquirer';
 
   inquirer
   .prompt([
@@ -20,7 +20,7 @@ const inquirer = require('inquirer');
       },
       {
         type: 'input',
-        message: 'Enter shaper color:',
+        message: 'Enter shape color:',
         name: 'shapeColor',
       },
   ])

@@ -11,7 +11,7 @@ const hexColorRegExp = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
 // Custom validation function to ensure the entered value matches one of the CSS color names or a hexadecimal color code
 const validateColor = function(value) {
-  if (cssColorNames.includes(value.toLowerCase()) || value.match(hexColorRegExp)) {
+  if (cssColorNames.includes(value.toLowerCase().replace(/\s/g, '')) || value.match(hexColorRegExp)) {
     return true;
   }
   return `Please enter a valid CSS color name or hexadecimal color code.`;
@@ -47,6 +47,7 @@ const prompts = [
   
   // Run the prompts to collect user input
   inquirer.prompt(prompts).then((answers) => {
+
     // Determine the shape class based on user input
     let ShapeClass;
     switch (answers.shape) {
@@ -65,7 +66,7 @@ const prompts = [
     }
   
     // Create an instance of the selected shape
-    const shape = new ShapeClass(answers.shapeColor,answers.text, answers.textColor);
+    const shape = new ShapeClass(answers.shapeColor.toLowerCase().replace(/\s/g, ''),answers.text, answers.textColor.toLowerCase().replace(/\s/g, ''));
   
     // Write the SVG code to a file named logo.svg
     fs.writeFileSync('logo.svg', shape.render());

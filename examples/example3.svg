@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+    <!-- Draw a green square -->
+    <rect width="150" height="150" fill="Green" />
+    
+    <!-- Add white text -->
+    <text x="75" y="75" text-anchor="middle" alignment-baseline="middle" fill="Red" font-size="40">
+      KAP
+    </text>
+  </svg>

@@ -1,6 +1,10 @@
 import { Circle, Triangle, Square } from './lib/shapes.mjs'; 
 import inquirer from 'inquirer';
 import fs from 'fs';
+import MaxLengthInputPrompt from 'inquirer-maxlength-input-prompt';
+ 
+
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
 
 // Define the prompts for user input
@@ -12,20 +16,22 @@ const prompts = [
       choices: ['Circle', 'Triangle', 'Square'],
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'shapeColor',
-      message: 'Enter the shape color:',
-      default: 'blue',
+      message: 'Select the shape color:',
+      choices: ['Black','Blue','Red','Green','Yellow','Orange','Pink','Purple'],
     },
     {
-      type: 'input',
+      type: 'maxlength-input',
       name: 'text',
-      message: 'Enter the text:',
+      message: 'Enter text:',
+      maxLength: 3
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'textColor',
-      message: 'Enter the text color:',
+      message: 'Select the text color:',
+      choices: ['White', 'Black', 'Blue','Red','Green','Yellow','Orange','Pink','Purple'],
     },
   ];
   

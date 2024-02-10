@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+  <!-- Draw a triangle -->
+  <polygon points="100,10 40,190 160,190" fill="Blue" />
+  
+  <!-- Add text -->
+  <text x="100" y="130" text-anchor="middle" fill="Pink" font-size="30">
+  VJR
+  </text>
+</svg>

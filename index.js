@@ -1,11 +1,21 @@
 import { Circle, Triangle, Square } from './lib/shapes.mjs'; 
 import inquirer from 'inquirer';
 import fs from 'fs';
+import {cssColorNames} from './colorsData.js';
 import MaxLengthInputPrompt from 'inquirer-maxlength-input-prompt';
- 
 
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
+// Regular expression for validating hexadecimal color
+const hexColorRegExp = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
+// Custom validation function to ensure the entered value matches one of the CSS color names or a hexadecimal color code
+const validateColor = function(value) {
+  if (cssColorNames.includes(value.toLowerCase()) || value.match(hexColorRegExp)) {
+    return true;
+  }
+  return `Please enter a valid CSS color name or hexadecimal color code.`;
+};
 
 // Define the prompts for user input
 const prompts = [
@@ -19,12 +29,7 @@ const prompts = [
       type: 'input',
       name: 'shapeColor',
       message: 'Select the shape color:',
-      validate: function(value) {
-        if (value.match(hexColorRegExp) || validColorNames.includes(value.toLowerCase())) {
-          return true;
-        }
-        return 'Please enter a valid hexadecimal color or named color (e.g., "blue", "green").';
-      }
+      validate: validateColor,
     },
     {
       type: 'maxlength-input',
@@ -36,12 +41,7 @@ const prompts = [
       type: 'input',
       name: 'textColor',
       message: 'Select the text color:',
-      validate: function(value) {
-        if (value.match(hexColorRegExp) || validColorNames.includes(value.toLowerCase())) {
-          return true;
-        }
-        return 'Please enter a valid hexadecimal color or named color (e.g., "blue", "green").';
-      }
+      validate: validateColor,
     },
   ];
   

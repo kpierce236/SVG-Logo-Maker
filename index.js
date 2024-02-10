@@ -16,10 +16,15 @@ const prompts = [
       choices: ['Circle', 'Triangle', 'Square'],
     },
     {
-      type: 'list',
+      type: 'input',
       name: 'shapeColor',
       message: 'Select the shape color:',
-      choices: ['Black','Blue','Red','Green','Yellow','Orange','Pink','Purple'],
+      validate: function(value) {
+        if (value.match(hexColorRegExp) || validColorNames.includes(value.toLowerCase())) {
+          return true;
+        }
+        return 'Please enter a valid hexadecimal color or named color (e.g., "blue", "green").';
+      }
     },
     {
       type: 'maxlength-input',
@@ -28,10 +33,15 @@ const prompts = [
       maxLength: 3
     },
     {
-      type: 'list',
+      type: 'input',
       name: 'textColor',
       message: 'Select the text color:',
-      choices: ['White', 'Black', 'Blue','Red','Green','Yellow','Orange','Pink','Purple'],
+      validate: function(value) {
+        if (value.match(hexColorRegExp) || validColorNames.includes(value.toLowerCase())) {
+          return true;
+        }
+        return 'Please enter a valid hexadecimal color or named color (e.g., "blue", "green").';
+      }
     },
   ];
   

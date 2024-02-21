@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+    <!-- Draw a circle -->
+    <circle cx="100" cy="100" r="80" fill="green" />
+    
+    <!-- Add text -->
+    <text x="100" y="100" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="40">
+      KAP
+    </text>
+  </svg>
